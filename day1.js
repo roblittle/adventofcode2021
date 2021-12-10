@@ -9,12 +9,12 @@ const sonarSweep = async(args) => {
     let right = args.length-1;
     while(left < right){
         if(args[left] < args[left+1]) goingDeeper++;
-        if(args[right] > args[right-1])goingDeeper++;
+        if(args[right] > args[right-1]) goingDeeper++;
         left++;
         right--;
-    }
-
+    };
     console.log(goingDeeper);
     return goingDeeper;
 };
+
 sonarSweep(inputArray);
