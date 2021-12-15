@@ -54,7 +54,7 @@ const checkRow = function(row, bingoBallVal, boardID){
         resultHash[boardID+ ' ' +row] = isNaN(resultHash[boardID+ ' ' +row]) ? 1 : resultHash[boardID+ ' ' +row]+1;
     }
     if(resultHash[boardID+ ' ' +row] === 5){
-        return winner('ROW', row, boardID, bingoBallVal);
+        return winner(boardID, bingoBallVal);
     }
 }
 
@@ -63,11 +63,11 @@ const checkCol = function(col, bingoBallVal, boardID){
         resultHash[boardID+ ' ' +col] = isNaN(resultHash[boardID+ ' ' +col]) ? 1 : resultHash[boardID+ ' ' +col]+1;
     }
     if(resultHash[boardID+ ' ' +col] === 5){
-        return winner('COL', col, boardID, bingoBallVal);
+        return winner(boardID, bingoBallVal);
     }
 }
 
-const winner = function(rowOrCol, rowColVal, boardID, bingoBallVal){
+const winner = function(boardID, bingoBallVal){
     let winningBoardAsArray = [].concat.apply([], allBoards[boardID]);
     let boardUnmarkedNums = winningBoardAsArray.filter(x => !calledNumbers.includes(x));
     let boardSum = boardUnmarkedNums.toString().split(",").map(Number).reduce((a, b) => a + b, 0);
